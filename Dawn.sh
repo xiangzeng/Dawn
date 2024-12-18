@@ -104,14 +104,6 @@ function install_and_configure() {
     echo "$email_token" > "$farm_file"
     echo "账户信息已写入 $farm_file"
 
-    # 配置代理信息
-    read -p "请输入您的代理信息，格式为 (http://user:pass@ip:port): " proxy_info
-    proxies_file="$DAWN_DIR/config/data/proxies.txt"
-
-    # 将代理信息写入文件
-    echo "$proxy_info" > "$proxies_file"
-    echo "代理信息已添加到 $proxies_file."
-
     echo "安装、克隆、虚拟环境设置和配置已完成！"
     echo "正在运行脚本 python3 run.py..."
     
@@ -169,14 +161,6 @@ function setup_grassnode() {
     fi
 
     cd "grass" || { echo "无法进入 grass 目录"; exit 1; }
-
-    # 配置代理信息
-    read -p "请输入您的代理信息，格式为 http://user:pass@ip:port: " proxy_info
-    proxy_file="/root/grass/proxy.txt"  # 更新文件路径为 /root/grass/proxy.txt
-
-    # 将代理信息写入文件
-    echo "$proxy_info" > "$proxy_file"
-    echo "代理信息已添加到 $proxy_file."
 
     # 获取用户ID并写入 uid.txt
     read -p "请输入您的 userId: " user_id
@@ -254,14 +238,6 @@ module.exports = [
   // Add more accounts as needed
 ];
 EOF
-
-    # 配置代理信息
-    read -p "请输入您的代理信息，格式为 http://user:pass@ip:port: " proxy_info
-    proxies_file="/root/teneo/proxy.txt"
-
-    # 将代理信息写入文件
-    echo "$proxy_info" > "$proxies_file"
-    echo "代理信息已添加到 $proxies_file."
 
     echo "正在使用 tmux 启动应用..."
     tmux new-session -d -s teneo  # 创建新的 tmux 会话，名称为 teneo
@@ -390,14 +366,6 @@ function setup_Nodepay() {
     fi
 
     cd "Nodepay" || { echo "无法进入 Nodepay 目录"; exit 1; }
-
-    # 配置代理信息
-    read -p "请输入您的代理信息，格式为 （http://user:pass@ip:port或者socks5）: " proxy_info
-    proxies_file="/root/Nodepay/proxy.txt"
-
-    # 将代理信息写入文件
-    echo "$proxy_info" > "$proxies_file"
-    echo "代理信息已添加到 $proxies_file"
 
     # 获取用户ID并写入 token.txt
     read -p "请输入您的 np_tokens: " user_id
